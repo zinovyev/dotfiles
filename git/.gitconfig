@@ -1,0 +1,15 @@
+[user]
+    name = Ivan Zinovyev
+    email = ivan@zinovyev.net
+[alias]
+    s  = status
+    st = status
+    ci = commit -v
+    co = checkout
+    ci = commit
+    wdiff = diff -w --word-diff=color --ignore-space-at-eol
+    struct = log --oneline --simplify-by-decoration --graph --all
+    slog = log --pretty=format:'%C(auto)%h %C(red)%as %C(blue)%aN%C(auto)%d%C(green) %s' 
+    l1 = slog -1
+    l5 = slog -5
+    l = last

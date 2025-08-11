@@ -1,0 +1,53 @@
+#! /usr/bin/env bash
+
+# Create file or directory with parent directories
+# For a more detalied description please take a look at:
+# https://zinovyev.net/blog/create-files-and-directories-with-parent-directories
+
+HELP_MESSAGE=$(cat <<EOM
+Create files or directories with underlying path
+Usage Examples:
+tt foo/bar/file  # => Create a file with parent directories relative to the current path "/current/path/foo/bar/file"
+tt /foo/bar/file # => Create a file with parent directories starting with an absolute path "/foo/bar/file"
+tt /foo/bar/dir/ # => Append "/" to the path to create a directory with parent directories "/foo/bar/dir"
+Install or update:
+wget -O /tmp/tt -- https://gist.githubusercontent.com/zinovyev/1f8caf9e886de610e2dd2c22a4ef7d69/raw/tt ; \
+chmod +x /tmp/tt ; \
+sudo mv -f /tmp/tt /usr/bin/tt
+Inspired by the NERDTree plugin for Vim
+EOM
+)
+
+if [ -z $1 ] || [ $1 == '-h' ] || [ $1 == '--help' ]; then echo -e "$HELP_MESSAGE" ; exit 1 ; fi
+
+LAST_CHAR=${1: -1}
+
+# Consider as directory when ending with /
+if [ $LAST_CHAR == '/' ]; then
+  mkdir -p $1
+
+# Consider as file otherwise
+else
+  TARGET_FILE=$(echo $1 | awk -F '/' '{print $NF}')
+  TARGET_PATH=${1%"$TARGET_FILE"}
+
+  if [ $TARGET_PATH ] && [ -n ${TARGET_PATH##*( )} ]; then
+
+    # Prepend TARGET_PATH with PWD for relative paths
+    if [[ ${TARGET_PATH:0:1} != "/" ]]; then
+      TARGET_PATH="${PWD}/$TARGET_PATH"
+    fi
+
+    # Remove trailing `/` on the end of TARGET_PATH
+    if [[ ${#TARGET_PATH} > 1 ]]; then
+      TARGET_PATH=${TARGET_PATH%"/"}
+    fi
+
+    # Create path if needed
+    if [[ ! -d $TARGET_PATH ]]; then
+      mkdir -p $TARGET_PATH
+    fi
+  fi
+
+  touch $1
+fi
