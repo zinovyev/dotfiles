@@ -1,32 +1,64 @@
-local function on_attach(client, bufnr)
-    -- Set up buffer-local keymaps (vim.api.nvim_buf_set_keymap()), etc.
-    local opts = { noremap = true, silent = true }
-    vim.api.nvim_buf_set_keymap(bufnr, "n", "gD", "<cmd>lua vim.lsp.buf.declaration()<CR>", opts)
-    vim.api.nvim_buf_set_keymap(bufnr, "n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>", opts)
-    vim.api.nvim_buf_set_keymap(bufnr, "n", "K", "<cmd>lua vim.lsp.buf.hover()<CR>", opts)
-    vim.api.nvim_buf_set_keymap(bufnr, "n", "<C-k>", "<cmd>lua vim.lsp.buf.code_action()<CR>", opts)
-    vim.api.nvim_buf_set_keymap(bufnr, "v", "<C-k>", "<cmd>lua vim.lsp.buf.range_code_action()<CR>", opts)
-    vim.api.nvim_buf_set_keymap(bufnr, "n", "gi", "<cmd>lua vim.lsp.buf.implementation()<CR>", opts)
-    -- vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>s", "<cmd>lua vim.lsp.buf.signature_help()<CR>", opts)
-    -- vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>lr", "<cmd>lua vim.lsp.buf.rename()<CR>", opts)
-    vim.api.nvim_buf_set_keymap(bufnr, "n", "gr", "<cmd>lua vim.lsp.buf.references()<CR>", opts)
-    -- vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>f", "<cmd>lua vim.diagnostic.open_float()<CR>", opts)
-    vim.api.nvim_buf_set_keymap(bufnr, "n", "[d", '<cmd>lua vim.diagnostic.goto_prev({ border = "single" })<CR>', opts)
-    vim.api.nvim_buf_set_keymap(bufnr, "n", "]d", '<cmd>lua vim.diagnostic.goto_next({ border = "single" })<CR>', opts)
-    -- vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>q", "<cmd>lua vim.diagnostic.setloclist()<CR>", opts)
-   -- vim.cmd [[ command! Format execute 'lua vim.lsp.buf.formatting()' ]]
+local on_attach = function(client, bufnr)
+  local opts = { buffer = bufnr, noremap = true, silent = true }
 
-    -- require 'lsp_signature'.on_attach({
-    --     bind = true,
-    --     floating_window_above_cur_line = true,
-    --     max_width = 120,
-    --     hi_parameter = 'Cursor',
-    --     hint_enable = false,
-    --     handler_opts = {
-    --         border = 'single'
-    --     }
-    -- }, bufnr)
+  -- When on a symbol, go to the file that defines it
+  vim.keymap.set('n', 'gd', vim.lsp.buf.definition, opts)
+
+  -- When on a symbol, open up a split showing files referencing 
+  -- this symbol. You can hit enter on any file and that file
+  -- and location of the reference open.
+  vim.keymap.set('n', 'gr', vim.lsp.buf.references, opts)
+
+  -- Open up a split and show all symbols defined in the current
+  -- file. Hitting enter on any symbol jumps to that location
+  -- in the file
+  vim.keymap.set('n', 'gs', vim.lsp.buf.document_symbol, opts)
+
+  -- Open a popup window showing any help available for the 
+  -- method signature you are on
+  vim.keymap.set('n', 'gK', vim.lsp.buf.signature_help, opts)
+
+  -- If there are errors or warnings, go to the next one
+  vim.keymap.set('n', 'dn', function() vim.diagnostic.jump({ count = 1, float = true }) end)
+
+  -- If there are errors or warnings, go to the previous one
+  vim.keymap.set('n', 'dp', function() vim.diagnostic.jump({ count = -1, float = true }) end)
+
+  -- If you are on a line with an error or warning, open a 
+  -- popup showing the error/warning message
+  vim.keymap.set('n', 'do', vim.diagnostic.open_float)
+
+  -- Open the "hover" window on a symbol, which tends to show
+  -- documentation on that symbol inline
+  vim.keymap.set('n', 'K', vim.lsp.buf.hover, opts)
+
+  -- While in insert mode, Ctrl-Space will invoke Ctrl-X Ctrl-o 
+  -- which initiates completion to show a list of symbols that
+  -- make sense for autocomplete
+  vim.api.nvim_set_keymap('i', '<C-Space>', '<C-x><C-o>', { noremap = true, silent = true })
+
+  -- Enable "inlay hints"
+  vim.lsp.inlay_hint.enable()
+
+  -- Enable completion
+  vim.lsp.completion.enable(true, client.id, bufnr, {
+    autotrigger = true, -- automatically pop up when e.g.  you type '.' after a variable
+    convert = function(item)
+      return { abbr = item.label:gsub('%b()', '') } -- NGL, no clue what this is for but it's needed
+    end,
+  })
+
+  -- If the LSP server supports semantic tokens to be used for highlighting
+  -- enable that.
+  if client and client.server_capabilities.semanticTokensProvider then
+    vim.lsp.semantic_tokens.start(args.buf,args.data.client_id)
+  end
 end
+
+-- The documentation said to set this for completion
+-- to work properly and/or well. I'm not sure what happens
+-- if you omit this
+vim.cmd[[set completeopt+=menuone,noselect,popup]]
 
 return {
   "neovim/nvim-lspconfig",

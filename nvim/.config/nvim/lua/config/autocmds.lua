@@ -20,3 +20,11 @@
 --   require("nvim-tree.api").tree.open()
 -- end
 -- vim.api.nvim_create_autocmd({ "VimEnter" }, { callback = open_nvim_tree })
+
+
+vim.api.nvim_create_user_command('Gblame', function()
+    local keys = vim.api.nvim_replace_termcodes(":Gitsigns blame <CR><CR>",true,false,true)
+    vim.api.nvim_feedkeys(keys, 'm', false)
+  end,
+  {nargs = 0, desc = 'Show Git Blame sidebar'}
+)
