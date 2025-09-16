@@ -28,3 +28,13 @@ vim.api.nvim_create_user_command('Gblame', function()
   end,
   {nargs = 0, desc = 'Show Git Blame sidebar'}
 )
+
+vim.api.nvim_create_user_command('Format', function()
+    if vim.lsp then
+      vim.lsp.buf.format()
+    else
+      vim.echon("LSP not loaded yet")
+    end
+  end,
+  {nargs = 0, desc = 'Show Git Blame sidebar'}
+)

@@ -2,6 +2,7 @@
     name = Ivan Zinovyev
     email = ivan@zinovyev.net
 [alias]
+    br = branch
     s  = status
     st = status
     ci = commit -v
