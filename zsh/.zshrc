@@ -83,3 +83,6 @@ if [ -f "${HOME}/Src/google-cloud-sdk/path.zsh.inc" ]; then . "${HOME}/Src/googl
 
 # The next line enables shell command completion for gcloud.
 if [ -f "${HOME}/Src/google-cloud-sdk/completion.zsh.inc" ]; then . "${HOME}/Src/google-cloud-sdk/completion.zsh.inc"; fi
+
+# opencode
+export PATH=/Users/vanya/.opencode/bin:$PATH

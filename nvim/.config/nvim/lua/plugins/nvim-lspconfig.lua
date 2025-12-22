@@ -18,6 +18,9 @@ return {
     })
     vim.lsp.enable('ruby_lsp')
 
+    -- Typescript
+    vim.lsp.enable('ts_ls')
+
     vim.keymap.set("n", "gd", vim.lsp.buf.definition, { desc = "Go to definition" })
     vim.keymap.set("n", "gD", vim.lsp.buf.declaration, { desc = "Go to declaration" })
     vim.keymap.set("n", "gr", vim.lsp.buf.references, { desc = "Find references" })

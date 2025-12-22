@@ -22,7 +22,7 @@ opt.wildignorecase = true           -- Completion ignores the case
 -- Visual settings
 opt.termguicolors = true  -- Enable 24-bit colors
 opt.signcolumn = 'yes'    -- Always show sign column (for git signs and diagnostics)
-opt.colorcolumn = '100'   -- Show column at 100 chars
+opt.colorcolumn = '120'   -- Show column at 100 chars
 opt.synmaxcol = 300       -- Syntax highlighting column limit
 opt.showmode = false      -- Show current VIM mode
 opt.pumheight = 10        -- Popup menu height

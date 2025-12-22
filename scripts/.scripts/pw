@@ -1,0 +1,3 @@
+#! /usr/bin/env bash
+
+pwgen -scny 12 | cat
