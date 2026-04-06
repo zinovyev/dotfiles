@@ -1,11 +1,14 @@
 [user]
     name = Ivan Zinovyev
     email = ivan@zinovyev.net
+[core]
+    editor = nvim
+    excludesfile = ~/.gitignore
+    quotepath = false
 [alias]
     br = branch
     s  = status
     st = status
-    ci = commit -v
     co = checkout
     ci = commit
     wdiff = diff -w --word-diff=color --ignore-space-at-eol
@@ -14,3 +17,7 @@
     l1 = slog -1
     l5 = slog -5
     l = last
+    hist = log --pretty=format:"%h %ad | %s%d [%an]" --graph --date=short
+    sq = squash
+[color]
+    ui = auto

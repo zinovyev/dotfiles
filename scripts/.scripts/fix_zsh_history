@@ -1,0 +1,17 @@
+#! /usr/bin/env zsh
+
+source ~/.zshrc 2>/dev/null
+
+if [ -z "$HISTFILE" ]; then
+  echo 'The $HISTFILE env variable is empty. Exiting now...'
+  exit 1
+fi
+
+BKP_HISTFILE="$HISTFILE.bkp"
+echo "History file path: \"$HISTFILE\". Temporary backup file path: \"${BKP_HISTFILE}\""
+
+mv "$HISTFILE" "$BKP_HISTFILE"
+strings "$BKP_HISTFILE" > "$HISTFILE"
+fc -R "$HISTFILE"
+
+echo "History file fixed. The temporary backup was removed"

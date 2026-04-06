@@ -57,6 +57,14 @@ PROMPT='%(?.%F{green}√.%F{red}✗)%f %B%F{blue}%~%f%b $(__git_ps1 "(%s) ")$ '
 alias ls="gls --color=auto"
 alias myip="curl http://ipecho.net/plain; echo"
 alias g="git"
+alias gi="git"
+alias got="git"
+alias "??"="tldr"
+alias irb="irb --noinspect"
+alias curlf='curl -w "$(cat ~/.curl-format)"'
+alias yaourt="yay"
+alias ltree="tree -L 2 --filelimit 10 --dirsfirst"
+alias dush='du -sch .[!.]* * | sort -h'
 alias vi="nvim"
 alias vim="nvim"
 # alias docker="podman"
@@ -64,13 +72,24 @@ alias vim="nvim"
 # PATH
 export PATH="${PATH}:${HOME}/.scripts"        # Public scripts
 export PATH="${PATH}:${HOME}/.pscripts"       # Private scripts that shouldn't be shared with dotfiles
-export PATH="${PATH}:$HOME/.config/viver/bin" # Viver vim setup manager
 
 # Enable ASDF support
 export PATH="${ASDF_DATA_DIR:-$HOME/.asdf}/shims:$PATH"
 
+# Linux-specific Docker host helper
+if [[ "$(uname -s)" == "Linux" ]] && command -v ip >/dev/null 2>&1; then
+  export DOCKER_HOST_IP="$(ip addr show | grep -i docker | awk 'match($0, /inet ([0-9\\.]+)/, a) { print a[1] }')"
+  export HOST_DOCKER_INTERNAL="${DOCKER_HOST_IP}"
+fi
+
 # ASDF hook
 eval "$(direnv hook zsh)"
+
+# Linux-specific Qt theming
+if [[ "$(uname -s)" == "Linux" ]]; then
+  export QT_QPA_PLATFORMTHEME=qt6ct
+  # export QT_QPA_PLATFORM=wayland
+fi
 
 # ENV vars
 export EDITOR=vim
@@ -79,10 +98,9 @@ export EDITOR=vim
 if [ -f "${HOME}/.pzshrc" ]; then source "${HOME}/.pzshrc"; fi
 
 # The next line updates PATH for the Google Cloud SDK.
-if [ -f "${HOME}/Src/google-cloud-sdk/path.zsh.inc" ]; then . "${HOME}/Src/google-cloud-sdk/path.zsh.inc"; fi
+# Restore if needed later.
+# if [ -f "${HOME}/Src/google-cloud-sdk/path.zsh.inc" ]; then . "${HOME}/Src/google-cloud-sdk/path.zsh.inc"; fi
 
 # The next line enables shell command completion for gcloud.
-if [ -f "${HOME}/Src/google-cloud-sdk/completion.zsh.inc" ]; then . "${HOME}/Src/google-cloud-sdk/completion.zsh.inc"; fi
-
-# opencode
-export PATH=/Users/vanya/.opencode/bin:$PATH
+# Restore if needed later.
+# if [ -f "${HOME}/Src/google-cloud-sdk/completion.zsh.inc" ]; then . "${HOME}/Src/google-cloud-sdk/completion.zsh.inc"; fi

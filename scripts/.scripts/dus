@@ -1,0 +1,4 @@
+#! /usr/bin/env bash
+
+# Show a size-sorted summary of files and directories in the current path.
+sudo du -sch "$@"/.[!.]* "$@"/* 2>/dev/null | sort -h
