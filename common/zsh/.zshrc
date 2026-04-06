@@ -54,7 +54,11 @@ fi
 PROMPT='%(?.%F{green}√.%F{red}✗)%f %B%F{blue}%~%f%b $(__git_ps1 "(%s) ")$ '
 
 # Aliases
-alias ls="gls --color=auto"
+if command -v gls >/dev/null 2>&1; then
+  alias ls="gls --color=auto"
+elif command -v ls >/dev/null 2>&1; then
+  alias ls="ls --color=auto"
+fi
 alias myip="curl http://ipecho.net/plain; echo"
 alias g="git"
 alias gi="git"
@@ -76,23 +80,21 @@ export PATH="${PATH}:${HOME}/.pscripts"       # Private scripts that shouldn't b
 # Enable ASDF support
 export PATH="${ASDF_DATA_DIR:-$HOME/.asdf}/shims:$PATH"
 
-# Linux-specific Docker host helper
-if [[ "$(uname -s)" == "Linux" ]] && command -v ip >/dev/null 2>&1; then
-  export DOCKER_HOST_IP="$(ip addr show | grep -i docker | awk 'match($0, /inet ([0-9\\.]+)/, a) { print a[1] }')"
-  export HOST_DOCKER_INTERNAL="${DOCKER_HOST_IP}"
-fi
-
 # ASDF hook
 eval "$(direnv hook zsh)"
 
-# Linux-specific Qt theming
-if [[ "$(uname -s)" == "Linux" ]]; then
-  export QT_QPA_PLATFORMTHEME=qt6ct
-  # export QT_QPA_PLATFORM=wayland
-fi
-
 # ENV vars
 export EDITOR=vim
+
+# OS-specific shell extensions
+case "$(uname -s)" in
+  Linux)
+    if [ -f "${HOME}/.zshrc.linux" ]; then source "${HOME}/.zshrc.linux"; fi
+    ;;
+  Darwin)
+    if [ -f "${HOME}/.zshrc.macos" ]; then source "${HOME}/.zshrc.macos"; fi
+    ;;
+esac
 
 # Private credentials etc
 if [ -f "${HOME}/.pzshrc" ]; then source "${HOME}/.pzshrc"; fi

@@ -1,0 +1,9 @@
+# Linux-specific Docker host helper
+if command -v ip >/dev/null 2>&1; then
+  export DOCKER_HOST_IP="$(ip addr show | grep -i docker | awk 'match($0, /inet ([0-9\\.]+)/, a) { print a[1] }')"
+  export HOST_DOCKER_INTERNAL="${DOCKER_HOST_IP}"
+fi
+
+# Linux-specific Qt theming
+export QT_QPA_PLATFORMTHEME=qt6ct
+# export QT_QPA_PLATFORM=wayland
