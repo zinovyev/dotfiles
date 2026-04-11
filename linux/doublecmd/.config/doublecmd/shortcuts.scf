@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<doublecmd DCVersion="1.2.4 beta">
+  <Hotkeys Version="70">
+    <Form Name="Main">
+      <Hotkey><Shortcut>F2</Shortcut><Command>cm_RenameOnly</Command></Hotkey>
+      <Hotkey><Shortcut>Shift+F6</Shortcut><Command>cm_RenameOnly</Command></Hotkey>
+      <Hotkey><Shortcut>F3</Shortcut><Command>cm_View</Command></Hotkey>
+      <Hotkey><Shortcut>F4</Shortcut><Command>cm_Edit</Command></Hotkey>
+      <Hotkey><Shortcut>F5</Shortcut><Command>cm_Copy</Command></Hotkey>
+      <Hotkey><Shortcut>F6</Shortcut><Command>cm_Rename</Command></Hotkey>
+      <Hotkey><Shortcut>F7</Shortcut><Command>cm_MakeDir</Command></Hotkey>
+      <Hotkey><Shortcut>F8</Shortcut><Command>cm_Delete</Command></Hotkey>
+      <Hotkey><Shortcut>F9</Shortcut><Command>cm_RunTerm</Command></Hotkey>
+      <Hotkey><Shortcut>Ctrl+B</Shortcut><Command>cm_FlatView</Command></Hotkey>
+      <Hotkey><Shortcut>Ctrl+D</Shortcut><Command>cm_DirHotList</Command></Hotkey>
+      <Hotkey><Shortcut>Ctrl+F</Shortcut><Command>cm_QuickFilter</Command></Hotkey>
+      <Hotkey><Shortcut>Ctrl+H</Shortcut><Command>cm_DirHistory</Command></Hotkey>
+      <Hotkey><Shortcut>Ctrl+L</Shortcut><Command>cm_CalculateSpace</Command></Hotkey>
+      <Hotkey><Shortcut>Ctrl+M</Shortcut><Command>cm_MultiRename</Command></Hotkey>
+      <Hotkey><Shortcut>Ctrl+Q</Shortcut><Command>cm_QuickView</Command></Hotkey>
+      <Hotkey><Shortcut>Ctrl+R</Shortcut><Command>cm_Refresh</Command></Hotkey>
+      <Hotkey><Shortcut>Ctrl+T</Shortcut><Command>cm_NewTab</Command></Hotkey>
+      <Hotkey><Shortcut>Ctrl+U</Shortcut><Command>cm_Exchange</Command></Hotkey>
+      <Hotkey><Shortcut>Ctrl+W</Shortcut><Command>cm_CloseTab</Command></Hotkey>
+      <Hotkey><Shortcut>Ctrl+Shift+C</Shortcut><Command>cm_CopyFullNamesToClip</Command></Hotkey>
+      <Hotkey><Shortcut>Ctrl+Shift+X</Shortcut><Command>cm_CopyNamesToClip</Command></Hotkey>
+      <Hotkey><Shortcut>Ctrl+Tab</Shortcut><Command>cm_NextTab</Command></Hotkey>
+      <Hotkey><Shortcut>Ctrl+Shift+Tab</Shortcut><Command>cm_PrevTab</Command></Hotkey>
+    </Form>
+  </Hotkeys>
+</doublecmd>

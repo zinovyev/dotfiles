@@ -1,0 +1,8 @@
+program_options:
+  tray: true
+  notify: true
+  automount: true
+  file_manager: doublecmd
+
+notifications:
+  timeout: 5

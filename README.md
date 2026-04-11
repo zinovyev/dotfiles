@@ -106,6 +106,12 @@ stow -d common scripts
 
 ```bash
 stow -d linux zsh
+stow -d linux sway
+stow -d linux waybar
+stow -d linux mako
+stow -d linux udiskie
+stow -d linux alacritty
+stow -d linux doublecmd
 ```
 
 ### macOS extras
@@ -130,6 +136,12 @@ The current `.curl-format` helper file lives in the shared `zsh` package because
 ### `linux`
 
 - `zsh`: Linux-specific shell environment additions
+- `sway`: window manager config
+- `waybar`: status bar config
+- `mako`: notification config
+- `udiskie`: mount tray behavior
+- `alacritty`: Linux terminal config
+- `doublecmd`: file manager config
 
 ### `macos`
 

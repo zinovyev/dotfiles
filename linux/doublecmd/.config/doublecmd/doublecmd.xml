@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<doublecmd DCVersion="1.2.4 beta" ConfigVersion="15">
+  <MainWindow>
+    <Position Save="True">
+      <Left>40</Left>
+      <Top>40</Top>
+      <Width>1600</Width>
+      <Height>980</Height>
+      <PixelsPerInch>96</PixelsPerInch>
+      <Maximized>True</Maximized>
+      <Splitter>50</Splitter>
+    </Position>
+  </MainWindow>
+  <Language>
+    <POFileName>doublecmd.pot</POFileName>
+  </Language>
+  <Behaviours>
+    <ShowCurDirTitleBar>False</ShowCurDirTitleBar>
+    <RunInTerminalStayOpenCmd>alacritty</RunInTerminalStayOpenCmd>
+    <RunInTerminalStayOpenParams>-e sh -c "{command}; echo -n Press ENTER to exit... ; read a"</RunInTerminalStayOpenParams>
+    <RunInTerminalCloseCmd>alacritty</RunInTerminalCloseCmd>
+    <RunInTerminalCloseParams>-e sh -c "{command}"</RunInTerminalCloseParams>
+    <JustRunTerminal>alacritty</JustRunTerminal>
+    <LynxLike>True</LynxLike>
+    <ConfirmQuit>False</ConfirmQuit>
+    <ShowSystemFiles>False</ShowSystemFiles>
+    <ListFilesInThread>True</ListFilesInThread>
+    <SortFolderMode>1</SortFolderMode>
+  </Behaviours>
+  <Fonts>
+    <Main FontName="JetBrainsMono Nerd Font" FontSize="10"/>
+    <Editor FontName="JetBrainsMono Nerd Font" FontSize="10"/>
+    <Viewer FontName="JetBrainsMono Nerd Font" FontSize="10"/>
+  </Fonts>
+  <Colors>
+    <Current>Light</Current>
+  </Colors>
+</doublecmd>

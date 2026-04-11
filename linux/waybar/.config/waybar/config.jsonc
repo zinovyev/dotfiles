@@ -1,0 +1,71 @@
+{
+  "layer": "top",
+  "position": "top",
+  "height": 34,
+  "spacing": 10,
+  "margin-top": 8,
+  "margin-left": 8,
+  "margin-right": 8,
+  "modules-left": ["sway/workspaces", "sway/mode", "sway/window"],
+  "modules-center": ["clock"],
+  "modules-right": ["tray", "pulseaudio", "network", "cpu", "memory", "battery", "custom/power"],
+
+  "sway/workspaces": {
+    "disable-scroll": true,
+    "all-outputs": true,
+    "format": "{name}"
+  },
+
+  "sway/window": {
+    "max-length": 80,
+    "separate-outputs": true
+  },
+
+  "clock": {
+    "format": "{:%a %d %b  %H:%M}",
+    "tooltip-format": "<big>{:%A, %d %B %Y}</big>\n<tt>{calendar}</tt>"
+  },
+
+  "pulseaudio": {
+    "format": "{icon} {volume}%",
+    "format-muted": "mute",
+    "format-icons": {
+      "default": ["vol"]
+    }
+  },
+
+  "network": {
+    "format-wifi": "wifi {essid}",
+    "format-ethernet": "eth",
+    "format-disconnected": "offline",
+    "tooltip-format": "{ifname} via {gwaddr}"
+  },
+
+  "cpu": {
+    "format": "cpu {usage}%"
+  },
+
+  "memory": {
+    "format": "mem {}%"
+  },
+
+  "battery": {
+    "format": "{capacity}%",
+    "format-charging": "chg {capacity}%",
+    "format-plugged": "ac",
+    "states": {
+      "warning": 25,
+      "critical": 12
+    }
+  },
+
+  "tray": {
+    "spacing": 10
+  },
+
+  "custom/power": {
+    "format": "power",
+    "tooltip": false,
+    "on-click": "swaynag -t warning -m 'Exit sway?' -b 'logout' 'swaymsg exit' -b 'suspend' 'systemctl suspend' -b 'poweroff' 'systemctl poweroff'"
+  }
+}

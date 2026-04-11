@@ -1,0 +1,73 @@
+{
+  Styles : [
+    {
+      Name : "Light",
+      FilePanel: {
+        ForeColor: 12563115,
+        BackColor: 3419176,
+        BackColor2: 3419176,
+        MarkColor: 8110309,
+        CursorColor: 5325886,
+        CursorText: 16777215,
+        GridLine: 4473924,
+        InactiveCursorColor: 4473924,
+        InactiveMarkColor: 6724305
+      },
+      FreeSpaceIndicator : {
+        ForeColor : 0,
+        BackColor : 16777215,
+        ThresholdForeColor : 255
+      },
+      Path : {
+        ActiveColor: 5325886,
+        ActiveFontColor: 16777215,
+        InactiveColor: 4473924,
+        InactiveFontColor: 12563115
+      },
+      Log : {
+        InfoColor: 12563115,
+        ErrorColor: 7695584,
+        SuccessColor: 7979928
+      },
+      SyncDirs : {
+        LeftColor : 32768,
+        RightColor : 16711680,
+        UnknownColor : 255
+      },
+      Viewer : {
+        ImageBackColor1 : -2147483643,
+        ImageBackColor2 : 536870912,
+        BookBackgroundColor : 0,
+        BookFontColor : 16777215
+      },
+      Differ : {
+        AddedColor : 11206570,
+        DeletedColor : 11184895,
+        ModifiedColor : 16755370,
+        ModifiedBinaryColor : 255
+      },
+      ProgressBar : {
+        RunColor1 : 11266507,
+        RunColor2 : 5296274,
+        WaitColor1 : 6605567,
+        WaitColor2 : 301567,
+        StopColor1 : 9804287,
+        StopColor2 : 6778623
+      },
+      TreeViewMenu : {
+        BackgroundColor : -2147483617,
+        ShortcutColor : 255,
+        NormalTextColor : -2147483640,
+        SecondaryTextColor : -2147483642,
+        FoundTextColor : -2147483635,
+        UnselectableTextColor : -2147483631,
+        CursorColor : -2147483635,
+        ShortcutUnderCursor : -2147483634,
+        NormalTextUnderCursor : -2147483634,
+        SecondaryTextUnderCursor : -2147483628,
+        FoundTextUnderCursor : 65535,
+        UnselectableUnderCursor : -2147483631
+      }
+    }
+  ]
+}
