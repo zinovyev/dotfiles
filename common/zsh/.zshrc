@@ -22,6 +22,16 @@ bindkey "\e[B" history-beginning-search-forward
 bindkey ^R history-incremental-search-backward 
 bindkey ^S history-incremental-search-forward
 
+# Word navigation
+bindkey "\eb" backward-word
+bindkey "\ef" forward-word
+bindkey "\e[1;3D" backward-word
+bindkey "\e[1;3C" forward-word
+bindkey "\e[1;5D" backward-word
+bindkey "\e[1;5C" forward-word
+bindkey "\e[5D" backward-word
+bindkey "\e[5C" forward-word
+
 # Move to directories without cd
 setopt autocd
 
@@ -78,7 +88,10 @@ export PATH="${PATH}:${HOME}/.scripts"        # Public scripts
 export PATH="${PATH}:${HOME}/.pscripts"       # Private scripts that shouldn't be shared with dotfiles
 
 # Enable ASDF support
-export PATH="${ASDF_DATA_DIR:-$HOME/.asdf}/shims:$PATH"
+# export PATH="${ASDF_DATA_DIR:-$HOME/.asdf}/shims:$PATH"
+
+# Enable Mise support
+eval "$(mise activate zsh)"
 
 # ASDF hook
 eval "$(direnv hook zsh)"
@@ -100,9 +113,7 @@ esac
 if [ -f "${HOME}/.pzshrc" ]; then source "${HOME}/.pzshrc"; fi
 
 # The next line updates PATH for the Google Cloud SDK.
-# Restore if needed later.
-# if [ -f "${HOME}/Src/google-cloud-sdk/path.zsh.inc" ]; then . "${HOME}/Src/google-cloud-sdk/path.zsh.inc"; fi
+if [ -f "${HOME}/Src/google-cloud-sdk/path.zsh.inc" ]; then . "${HOME}/Src/google-cloud-sdk/path.zsh.inc"; fi
 
 # The next line enables shell command completion for gcloud.
-# Restore if needed later.
-# if [ -f "${HOME}/Src/google-cloud-sdk/completion.zsh.inc" ]; then . "${HOME}/Src/google-cloud-sdk/completion.zsh.inc"; fi
+if [ -f "${HOME}/Src/google-cloud-sdk/completion.zsh.inc" ]; then . "${HOME}/Src/google-cloud-sdk/completion.zsh.inc"; fi

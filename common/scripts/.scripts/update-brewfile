@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+script_dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd -P)"
+repo_root="${DOTFILES_DIR:-$(cd "${script_dir}/../../.." && pwd -P)}"
+brewfile="${1:-${repo_root}/macos/brew/.config/homebrew/Brewfile}"
+
+if ! command -v brew >/dev/null 2>&1; then
+  echo "Missing brew. Install Homebrew first." >&2
+  exit 1
+fi
+
+mkdir -p "$(dirname "${brewfile}")"
+brew bundle dump --force --describe --file="${brewfile}"
+
+echo "Updated ${brewfile}"
