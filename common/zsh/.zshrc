@@ -87,9 +87,6 @@ alias vim="nvim"
 export PATH="${PATH}:${HOME}/.scripts"        # Public scripts
 export PATH="${PATH}:${HOME}/.pscripts"       # Private scripts that shouldn't be shared with dotfiles
 
-# Enable ASDF support
-# export PATH="${ASDF_DATA_DIR:-$HOME/.asdf}/shims:$PATH"
-
 # Enable Mise support
 eval "$(mise activate zsh)"
 

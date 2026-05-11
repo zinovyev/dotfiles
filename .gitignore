@@ -1,3 +1,4 @@
 scripts/.scripts/viver
 .DS_STORE
 **/*/lazy-lock.json
+common/tmux/.config/tmux/plugins/

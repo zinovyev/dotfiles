@@ -26,7 +26,7 @@ brew install stow
 brew install fzf
 brew install luarocks
 brew install tree
-brew install asdf
+brew install mise
 brew install coreutils
 brew install bat
 brew install fd
@@ -50,7 +50,7 @@ brew install --cask zed
 Install the current baseline packages:
 
 ```bash
-sudo pacman -S stow zsh tmux fzf tree asdf bat fd neovim git curl
+sudo pacman -S stow zsh tmux fzf tree mise bat fd neovim git curl
 ```
 
 Additional Linux packages used by the current shell/tooling setup:
@@ -106,6 +106,12 @@ stow -d common git -t ..
 stow -d common nvim -t ..
 stow -d common tmux -t ..
 stow -d common scripts -t ..
+```
+
+Install tmux plugins after `tmux` and `scripts` are stowed:
+
+```bash
+install-tmux-plugins
 ```
 
 ### Linux extras

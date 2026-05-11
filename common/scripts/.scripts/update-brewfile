@@ -2,6 +2,7 @@
 
 set -euo pipefail
 
+# Refresh the macOS Brewfile stored in this dotfiles repo.
 script_dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd -P)"
 repo_root="${DOTFILES_DIR:-$(cd "${script_dir}/../../.." && pwd -P)}"
 brewfile="${1:-${repo_root}/macos/brew/.config/homebrew/Brewfile}"

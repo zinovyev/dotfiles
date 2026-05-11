@@ -51,6 +51,7 @@ opt.ignorecase = true -- Ignore case in search
 opt.smartcase = true  -- Unignore case if case contains an uppercase letter
 opt.hlsearch = true   -- Highlight search
 opt.incsearch = true  -- Show matches as you type
+opt.inccommand = ""   -- Don't preview incomplete substitute commands
 opt.showmatch = true  -- Hl matching brackets
 opt.matchtime = 2     -- How long to show matching bracket
 

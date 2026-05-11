@@ -1,0 +1,32 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+# Bootstrap TPM outside the dotfiles repo and install plugins declared in tmux.conf.
+tpm_dir="${TPM_DIR:-${HOME}/.tmux/plugins/tpm}"
+tpm_repo="https://github.com/tmux-plugins/tpm"
+
+if ! command -v git >/dev/null 2>&1; then
+  echo "Missing git. Install git first." >&2
+  exit 1
+fi
+
+if ! command -v tmux >/dev/null 2>&1; then
+  echo "Missing tmux. Install tmux first." >&2
+  exit 1
+fi
+
+if [ ! -x "${tpm_dir}/tpm" ]; then
+  mkdir -p "$(dirname "${tpm_dir}")"
+  git clone "${tpm_repo}" "${tpm_dir}"
+else
+  git -C "${tpm_dir}" pull --ff-only
+fi
+
+if tmux info >/dev/null 2>&1; then
+  tmux source-file "${HOME}/.config/tmux/tmux.conf"
+fi
+
+"${tpm_dir}/bin/install_plugins"
+
+echo "tmux plugins installed"
