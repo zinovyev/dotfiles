@@ -28,6 +28,8 @@ brew "tree-sitter"
 brew "neovim"
 # Port scanning utility for large networks
 brew "nmap"
+# Object-relational database system
+brew "postgresql@16", link: true
 # Safe, concurrent, practical language
 brew "rust"
 # Organize software neatly under a single directory tree (e.g. /usr/local)
@@ -49,3 +51,5 @@ cask "kitty"
 cask "marta"
 # Replacement for Docker Desktop
 cask "orbstack"
+# Video communication and virtual meeting platform
+cask "zoom"
