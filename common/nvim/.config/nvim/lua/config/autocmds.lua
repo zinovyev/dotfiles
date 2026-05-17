@@ -39,6 +39,26 @@ vim.api.nvim_create_user_command('Format', function()
   {nargs = 0, desc = 'Show Git Blame sidebar'}
 )
 
+vim.api.nvim_create_autocmd({ "BufWinEnter", "WinEnter" }, {
+  callback = function()
+    local disabled_filetypes = {
+      NvimTree = true,
+    }
+
+    if vim.bo.buftype == "" and not disabled_filetypes[vim.bo.filetype] then
+      vim.wo.number = true
+      vim.wo.signcolumn = "yes"
+      vim.wo.statuscolumn = ""
+      vim.wo.colorcolumn = "120"
+    else
+      vim.wo.number = false
+      vim.wo.signcolumn = "no"
+      vim.wo.statuscolumn = ""
+      vim.wo.colorcolumn = "0"
+    end
+  end,
+})
+
 local function find_and_replace(find, replace)
   local rg_cmd = string.format("rg --files-with-matches --no-messages %s", vim.fn.shellescape(find))
   local files = vim.fn.systemlist(rg_cmd)

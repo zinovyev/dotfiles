@@ -8,5 +8,6 @@ return {
     }
     -- Enable theme
     require('onedark').load()
+    vim.api.nvim_set_hl(0, 'ColorColumn', { bg = '#3a3f4b' })
   end
 }

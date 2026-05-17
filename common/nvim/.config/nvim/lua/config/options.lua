@@ -22,7 +22,7 @@ opt.wildignorecase = true           -- Completion ignores the case
 -- Visual settings
 opt.termguicolors = true  -- Enable 24-bit colors
 opt.signcolumn = 'yes'    -- Always show sign column (for git signs and diagnostics)
-opt.colorcolumn = '120'   -- Show column at 100 chars
+opt.colorcolumn = '120'   -- Show column at 120 chars
 opt.synmaxcol = 300       -- Syntax highlighting column limit
 opt.showmode = false      -- Show current VIM mode
 opt.pumheight = 10        -- Popup menu height
@@ -51,7 +51,6 @@ opt.ignorecase = true -- Ignore case in search
 opt.smartcase = true  -- Unignore case if case contains an uppercase letter
 opt.hlsearch = true   -- Highlight search
 opt.incsearch = true  -- Show matches as you type
-opt.inccommand = ""   -- Don't preview incomplete substitute commands
 opt.showmatch = true  -- Hl matching brackets
 opt.matchtime = 2     -- How long to show matching bracket
 
